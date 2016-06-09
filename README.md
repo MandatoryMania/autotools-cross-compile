@@ -4,8 +4,18 @@
 ./configure 
 make 
 ```
+#Developing on linux and cross-compiling to Windows
+```bash
+./bootstrap.sh
+./cross-compile-win64.sh
+make
+```
 
-#Cross Compiling from linux to windows. 
+#Cross compile SDL2 on linux for windows
+Most non-trivial programs have library dependencies. When you are cross-compiling on Linux you first need to 
+go and cross compile all the dependencies and install all the correct headers. For this example project we will
+use SDL2 as an example for you to follow. 
+
 - Grab SDL2 [sources](https://libsdl.org/release/SDL2-2.0.4.tar.gz)
 - Apply the [gcc patches](https://github.com/Alexpux/MINGW-packages/tree/master/mingw-w64-SDL2)
 - Once you have the patched source then build SDL2 (64 bit!) with the
