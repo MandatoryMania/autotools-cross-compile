@@ -9,5 +9,4 @@ function make_binary_package()
     find . -type f -print > ../files.lst
 }
 
-#Disable pkg-config for cross-compiling
-PKG_CONFIG="" ./configure --build=x86_64-pc-linux-gnu --host=x86_64-w64-mingw32  --with-sdl-prefix=/usr/x86_64-w64-mingw32
+./configure --build=x86_64-pc-linux-gnu --host=x86_64-w64-mingw32
