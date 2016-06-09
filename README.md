@@ -86,3 +86,57 @@ mingw-w64-x86-64-dev				install
 ...
 ```
 
+##Sample output for this project on a system that is setup correctly
+```bash
+[spanter@segfault cross-compile-autotools(master)↑ ]$ ./bootstrap.sh 
+configure.ac:4: installing './compile'
+configure.ac:3: installing './install-sh'
+configure.ac:3: installing './missing'
+src/Makefile.am: installing './depcomp'
+[spanter@segfault cross-compile-autotools(master)↑ ]$ ls
+aclocal.m4      bootstrap.sh  config.h.in  configure.ac            depcomp  GRTAGS  install-sh  m4           Makefile.in  README.md
+autom4te.cache  compile       configure    cross-compile-win64.sh  GPATH    GTAGS   LICENSE     Makefile.am  missing      src
+[spanter@segfault cross-compile-autotools(master)↑ ]$ ./cross-compile-win64.sh 
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for x86_64-w64-mingw32-strip... x86_64-w64-mingw32-strip
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking for x86_64-w64-mingw32-gcc... x86_64-w64-mingw32-gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.exe
+checking for suffix of executables... .exe
+checking whether we are cross compiling... yes
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether x86_64-w64-mingw32-gcc accepts -g... yes
+checking for x86_64-w64-mingw32-gcc option to accept ISO C89... none needed
+checking whether x86_64-w64-mingw32-gcc understands -c and -o together... yes
+checking for style of include used by make... GNU
+checking dependency style of x86_64-w64-mingw32-gcc... gcc3
+checking for x86_64-w64-mingw32-pkg-config... /usr/bin/x86_64-w64-mingw32-pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for SDL... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating config.h
+config.status: executing depfiles commands
+[spanter@segfault cross-compile-autotools(master)↑ ]$ make
+make  all-recursive
+make[1]: Entering directory '/home/spanter/repos/github/cross-compile-autotools'
+Making all in src
+make[2]: Entering directory '/home/spanter/repos/github/cross-compile-autotools/src'
+x86_64-w64-mingw32-gcc -DHAVE_CONFIG_H -I. -I..     -g -O2 -Dmain=SDL_main -I/usr/x86_64-w64-mingw32/include/SDL2 -MT main.o -MD -MP -MF .deps/main.Tpo -c -o main.o main.c
+mv -f .deps/main.Tpo .deps/main.Po
+x86_64-w64-mingw32-gcc  -g -O2 -Dmain=SDL_main -I/usr/x86_64-w64-mingw32/include/SDL2   -o example.exe main.o  -L/usr/x86_64-w64-mingw32/lib -lmingw32 -lSDL2main -lSDL2 -mwindows
+make[2]: Leaving directory '/home/spanter/repos/github/cross-compile-autotools/src'
+make[2]: Entering directory '/home/spanter/repos/github/cross-compile-autotools'
+make[2]: Leaving directory '/home/spanter/repos/github/cross-compile-autotools'
+make[1]: Leaving directory '/home/spanter/repos/github/cross-compile-autotools'
+[spanter@segfault cross-compile-autotools(master)↑ ]$ 
+```
